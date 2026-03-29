@@ -9,9 +9,9 @@ import {
 
 const menuItems = [
   { name: "Dashboard", icon: LayoutDashboard, href: "/dashboard" },
-  { name: "User Management", icon: Users, href: "/dashboard/users" },
   { name: "Inventario", icon: ShieldCheck, href: "/dashboard/inventario" },
   { name: "Servicios", icon: History, href: "/dashboard/servicios" },
+  { name: "Usuarios", icon: Users, href: "/dashboard/users" },
 ];
 
 export function Sidebar() {

@@ -16,11 +16,6 @@ export default function UserManagementPage() {
       {/* Header */}
       <div className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
         <div>
-          <nav className="flex items-center gap-2 text-xs font-medium text-[#abaab0] mb-2">
-            <span className="hover:text-[#80aeff] cursor-pointer">Home</span>
-            <ChevronRight className="w-3 h-3" />
-            <span className="text-white">User Management</span>
-          </nav>
           <h2 className="text-3xl font-extrabold tracking-tight text-white flex items-center gap-3">
             Usuarios
             <span className="bg-[#18191e] px-2.5 py-1 rounded-lg text-xs font-bold text-[#abaab0]">1,284 Total</span>
