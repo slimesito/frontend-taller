@@ -1,15 +1,15 @@
-"use client";
+import type { Metadata } from "next";
 import { Search, ChevronRight, ChevronLeft, Plus } from "lucide-react";
-import { useTitle } from "@/hooks/useTitle";
+
+export const metadata: Metadata = { title: "Usuarios" };
 
 const users = [
-  { id: 1, name: "William Smith", email: "w.smith@taller.com", role: "Administrator", status: "Active", joined: "Oct 12, 2023", lastSeen: "2 hours ago", color: "emerald" },
-  { id: 2, name: "Juan Pérez", email: "j.perez@mecanico.io", role: "Editor", status: "Active", joined: "Dec 01, 2023", lastSeen: "Yesterday", color: "emerald" },
-  { id: 3, name: "Admin Guest", email: "admin@customer.net", role: "Customer", status: "Inactive", joined: "Nov 15, 2023", lastSeen: "3 days ago", color: "orange" },
+  { id: 1, name: "William Smith", email: "w.smith@taller.com", role: "Administrator", status: "Active", joined: "Oct 12, 2023" },
+  { id: 2, name: "Juan Pérez", email: "j.perez@mecanico.io", role: "Editor", status: "Active", joined: "Dec 01, 2023" },
+  { id: 3, name: "Admin Guest", email: "admin@customer.net", role: "Customer", status: "Inactive", joined: "Nov 15, 2023" },
 ];
 
 export default function UserManagementPage() {
-  useTitle("Usuarios");
   return (
     <div className="animate-in fade-in duration-500">
       {/* Header */}
@@ -26,11 +26,11 @@ export default function UserManagementPage() {
       <div className="bg-[#18191e] rounded-xl p-4 mb-6 flex flex-wrap items-center gap-4 border border-white/5">
         <div className="relative flex-1 min-w-[300px]">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-[#abaab0] w-4 h-4" />
-          <input className="w-full bg-[#0F1014] border-none rounded-xl pl-10 pr-4 py-3 text-sm focus:ring-2 focus:ring-[#80aeff]/20 text-white placeholder:text-[#75757a]" placeholder="Buscar usuarios..." type="text"/>
+          <input className="w-full bg-[#0F1014] border-none rounded-xl pl-10 pr-4 py-3 text-sm focus:ring-2 focus:ring-[#80aeff]/20 text-white placeholder:text-[#75757a]" placeholder="Buscar usuarios..." type="text" />
         </div>
         <div className="flex items-center gap-3">
           <button className="bg-[#0F1014] text-white text-sm px-4 py-3 rounded-xl flex items-center gap-2 hover:bg-[#24252b] transition-colors border border-white/5">
-            Roles <ChevronDown className="w-4 h-4" />
+            Roles <ChevronRight className="w-4 h-4 rotate-90" />
           </button>
           <button className="bg-gradient-to-br from-[#67a0ff] to-[#0072e3] text-white text-sm font-bold px-6 py-3 rounded-xl flex items-center gap-2 shadow-lg hover:opacity-90 transition-all active:scale-95">
             <Plus className="w-4 h-4" /> Add User
@@ -71,8 +71,8 @@ export default function UserManagementPage() {
                 </td>
                 <td className="px-6 py-4">
                   <div className="flex items-center gap-2">
-                    <div className={`w-2 h-2 rounded-full ${user.status === 'Active' ? 'bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]' : 'bg-orange-500 shadow-[0_0_8px_rgba(249,115,22,0.5)]'}`}></div>
-                    <span className={`text-xs font-medium ${user.status === 'Active' ? 'text-emerald-500' : 'text-orange-500'}`}>{user.status}</span>
+                    <div className={`w-2 h-2 rounded-full ${user.status === "Active" ? "bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]" : "bg-orange-500 shadow-[0_0_8px_rgba(249,115,22,0.5)]"}`}></div>
+                    <span className={`text-xs font-medium ${user.status === "Active" ? "text-emerald-500" : "text-orange-500"}`}>{user.status}</span>
                   </div>
                 </td>
                 <td className="px-6 py-4 text-xs text-[#abaab0] font-medium">{user.joined}</td>
@@ -98,9 +98,4 @@ export default function UserManagementPage() {
       </div>
     </div>
   );
-}
-
-// Helper simple para el ícono de bajar
-function ChevronDown({ className }: { className?: string }) {
-  return <ChevronRight className={`rotate-90 ${className}`} />;
 }

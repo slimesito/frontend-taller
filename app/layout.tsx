@@ -9,7 +9,10 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Taller Mecánico",
+  title: {
+    default: "Taller Mecánico",
+    template: "%s | Taller",
+  },
   description: "Sistema de gestión de taller",
 };
 
