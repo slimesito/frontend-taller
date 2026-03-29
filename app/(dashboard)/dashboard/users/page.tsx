@@ -40,7 +40,8 @@ export default function UserManagementPage() {
 
       {/* Table */}
       <div className="bg-[#18191e] rounded-xl overflow-hidden border border-white/5 shadow-2xl">
-        <table className="w-full text-left border-collapse">
+        <div className="overflow-x-auto">
+        <table className="w-full text-left border-collapse min-w-[600px]">
           <thead>
             <tr className="bg-[#24252b]/30">
               <th className="px-6 py-4 text-[11px] font-black uppercase tracking-widest text-[#abaab0] border-b border-white/5">Usuario</th>
@@ -85,6 +86,7 @@ export default function UserManagementPage() {
             ))}
           </tbody>
         </table>
+        </div>
 
         {/* Pagination */}
         <div className="px-6 py-4 flex items-center justify-between bg-[#24252b]/10 border-t border-white/5">

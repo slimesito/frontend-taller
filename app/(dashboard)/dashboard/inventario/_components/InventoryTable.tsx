@@ -31,7 +31,8 @@ interface InventoryTableProps {
 export function InventoryTable({ data }: InventoryTableProps) {
   return (
     <div className="bg-[#18191e] rounded-xl overflow-hidden border border-white/5 shadow-2xl">
-      <table className="w-full text-left border-collapse">
+      <div className="overflow-x-auto">
+      <table className="w-full text-left border-collapse min-w-[640px]">
         <thead>
           <tr className="bg-[#24252b]/30">
             <th className="px-6 py-4 text-[11px] font-black uppercase tracking-widest text-[#abaab0] border-b border-white/5">Producto / SKU</th>
@@ -77,6 +78,7 @@ export function InventoryTable({ data }: InventoryTableProps) {
           ))}
         </tbody>
       </table>
+      </div>
     </div>
   );
 }

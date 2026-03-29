@@ -1,11 +1,8 @@
 "use client";
-import React from "react";
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { 
-  LayoutDashboard, Users, ShieldCheck, History, 
-  Key, LifeBuoy, LogOut, Plus 
-} from "lucide-react";
+import { X, LayoutDashboard, Users, ShieldCheck, History, LifeBuoy, LogOut, Plus } from "lucide-react";
 
 const menuItems = [
   { name: "Dashboard", icon: LayoutDashboard, href: "/dashboard" },
@@ -14,23 +11,44 @@ const menuItems = [
   { name: "Usuarios", icon: Users, href: "/dashboard/users" },
 ];
 
-export function Sidebar() {
+interface SidebarProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+export function Sidebar({ isOpen, onClose }: SidebarProps) {
   const pathname = usePathname();
 
   return (
-    <aside className="fixed left-0 top-0 h-screen w-72 z-50 bg-[#0F1014] flex flex-col p-6 border-r border-white/5">
-      <div className="mb-10 flex items-center gap-3">
-        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#67a0ff] to-[#0072e3] flex items-center justify-center shadow-lg">
-          <LayoutDashboard className="text-white w-6 h-6" />
+    <aside
+      className={`fixed left-0 top-0 h-screen w-72 z-50 bg-[#0F1014] flex flex-col p-6 border-r border-white/5 transition-transform duration-300 ease-in-out ${
+        isOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
+      }`}
+    >
+      {/* Header */}
+      <div className="mb-10 flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#67a0ff] to-[#0072e3] flex items-center justify-center shadow-lg shrink-0">
+            <LayoutDashboard className="text-white w-6 h-6" />
+          </div>
+          <div>
+            <h1 className="text-lg font-black bg-gradient-to-br from-[#67a0ff] to-[#0072e3] bg-clip-text text-transparent">
+              Taller Mecánico
+            </h1>
+            <p className="text-[10px] uppercase tracking-widest text-[#abaab0] font-bold">Sistema de gestión</p>
+          </div>
         </div>
-        <div>
-          <h1 className="text-lg font-black bg-gradient-to-br from-[#67a0ff] to-[#0072e3] bg-clip-text text-transparent">
-            Taller Mecánico
-          </h1>
-          <p className="text-[10px] uppercase tracking-widest text-[#abaab0] font-bold">Taller Mecánico</p>
-        </div>
+
+        {/* Close button — mobile only */}
+        <button
+          onClick={onClose}
+          className="lg:hidden p-1.5 text-[#abaab0] hover:text-white hover:bg-white/10 rounded-lg transition-colors"
+        >
+          <X className="w-5 h-5" />
+        </button>
       </div>
 
+      {/* Nav */}
       <nav className="flex-1 space-y-1">
         {menuItems.map((item) => {
           const isActive = pathname === item.href;
@@ -39,18 +57,19 @@ export function Sidebar() {
               key={item.name}
               href={item.href}
               className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all active:translate-x-1 ${
-                isActive 
-                  ? "bg-[#18191e] text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)]" 
+                isActive
+                  ? "bg-[#18191e] text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)]"
                   : "text-gray-500 hover:text-gray-300 hover:bg-[#18191e]/50"
               }`}
             >
-              <item.icon className={`w-5 h-5 ${isActive ? "text-[#1B84FF]" : ""}`} />
+              <item.icon className={`w-5 h-5 shrink-0 ${isActive ? "text-[#1B84FF]" : ""}`} />
               <span className="text-sm font-medium">{item.name}</span>
             </Link>
           );
         })}
       </nav>
 
+      {/* Footer */}
       <div className="mt-auto space-y-4">
         <button className="w-full py-3 bg-[#1e1f25] rounded-xl text-[#80aeff] font-bold hover:bg-[#24252b] transition-colors active:scale-95 flex items-center justify-center gap-2">
           <Plus className="w-4 h-4" />
