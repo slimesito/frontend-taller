@@ -1,6 +1,5 @@
 "use client";
-import React from "react";
-import { Search, ChevronRight, ChevronLeft, Plus, ExpandMore, Filter } from "lucide-react";
+import { Search, ChevronRight, ChevronLeft, Plus } from "lucide-react";
 import { useTitle } from "@/hooks/useTitle";
 
 const users = [
