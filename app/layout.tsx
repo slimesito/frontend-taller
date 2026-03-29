@@ -9,7 +9,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Sovereign | Taller Mecánico",
+  title: "Taller Mecánico",
   description: "Sistema de gestión de taller",
 };
 
